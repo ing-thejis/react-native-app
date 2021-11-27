@@ -1,4 +1,4 @@
-import { StyleSheet, Dimensions } from 'react-native'
+import { StyleSheet } from 'react-native'
 
 export const styles = StyleSheet.create({
     container: {
@@ -16,7 +16,7 @@ export const styles = StyleSheet.create({
         width: '100%',
         backgroundColor: '#fff',
         borderBottomLeftRadius: 50,
-        borderBottomRightRadius: 50,
+        borderBottomRightRadius: 50
     },
     logo: {
         width: 150,
@@ -44,7 +44,7 @@ export const styles = StyleSheet.create({
         flex: 2,
         backgroundColor: '#8e8e8e',
         padding: 15,
-        width: '35%',
+        width: '45%',
         borderRadius: 20
     },
     btnSelect: {
@@ -60,22 +60,21 @@ export const styles = StyleSheet.create({
         padding: 10,
         width: '90%'
     },
-    input: { 
+    input: {
         backgroundColor: '#fff',
         padding: 15,
-        marginVertical: 10,
+        marginBottom: 10,
         borderRadius: 10
     },
-
-    btnLogin: {
+    btnSignup: {
         backgroundColor: '#ff8d1e',
         padding: 15,
         marginTop: 10,
         borderRadius: 10
-    },
+    },    
     btnText: {
+        color: '#fff',
         fontSize: 18,
-        textAlign: 'center', 
-        color: '#fff'
+        textAlign: 'center',  
     }
 })
