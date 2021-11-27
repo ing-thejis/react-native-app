@@ -1,10 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { styles } from '../styles/Signup'
 import { Text, TextInput, TouchableOpacity, View, StatusBar, AsyncStorageStatic, Image } from 'react-native'
 import { useLogin } from '../helpers/helpLogin'
-import { Input, Icon } from 'react-native-elements'
 
-const userIcon = <Icon type="font-awesome" name="user-circle" size={20} color="#aaa"/>
+import { AuthContext } from '../context/AuthContext'
 
 const Signup = ({navigation}) => {
 
@@ -16,6 +15,8 @@ const Signup = ({navigation}) => {
         email,
         handleChange
     } = useLogin();
+
+    const {  } = useContext(AuthContext)
 
     const handleSignup = () => {
         alert('Signup')
