@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { styles } from '../styles/Login'
 import { Text, TextInput, TouchableOpacity, View, StatusBar, Image } from 'react-native'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Admin } from '../db/Users'
 import { useLogin } from '../helpers/helpLogin'
-
+import { AuthContext } from '../context/AuthContext';
 const Login = ({navigation}) => {
 
     const [btnSelected, setBtnSelected] = useState(true)
@@ -15,17 +15,21 @@ const Login = ({navigation}) => {
         handleChange
     } = useLogin();
   
-    const handleLogin = async () => {
+    const { signIn } = useContext(AuthContext)
 
-        setBtnSelected(!btnSelected)
+    // const handleLogin = async () => {
+    //     setBtnSelected(!btnSelected)
 
-        if (Admin.username === username && Admin.password === password ) {
-            alert('Logged in')
-        } else {
-            alert('Username and/or password is incorrect')
-        }
+    //     if (Admin.username === username && Admin.password === password ) {
+    //         alert('Logged in')
+    //     } else {
+    //         alert('Username and/or password is incorrect')
+    //     }
+    // }
+
+    const handleLogin = (valueUsername, valuePassword) => {
+        signIn(valueUsername, valuePassword)
     }
-
     return (
         <View style={styles.container}>
             <StatusBar 
@@ -66,8 +70,8 @@ const Login = ({navigation}) => {
                     value={password}
                 />
                 <TouchableOpacity><Text style={{color: '#fff', marginVertical: 4}}>Forgot password</Text></TouchableOpacity>
-                <TouchableOpacity style={styles.btnLogin} onPress={()=>handleLogin()}>
-                    <Text style={styles.btnText}>Login</Text>
+                <TouchableOpacity style={styles.btnLogin} onPress={() => {handleLogin(username, password)}}>
+                    <Text style={styles.btnText}>Sign In</Text>
                 </TouchableOpacity>
             </View>
         </View>
