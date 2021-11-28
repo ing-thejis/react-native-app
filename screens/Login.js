@@ -1,10 +1,9 @@
 import React, { useState, useContext } from 'react'
 import { styles } from '../styles/Login'
-import { Text, TextInput, TouchableOpacity, View, StatusBar, Image } from 'react-native'
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Admin } from '../db/Users'
+import { Text, TextInput, TouchableOpacity, View, StatusBar, Image, KeyboardAvoidingView, ScrollView } from 'react-native'
 import { useLogin } from '../helpers/helpLogin'
 import { AuthContext } from '../context/AuthContext';
+
 const Login = ({navigation}) => {
 
     const [btnSelected, setBtnSelected] = useState(true)
@@ -17,21 +16,12 @@ const Login = ({navigation}) => {
   
     const { signIn } = useContext(AuthContext)
 
-    // const handleLogin = async () => {
-    //     setBtnSelected(!btnSelected)
-
-    //     if (Admin.username === username && Admin.password === password ) {
-    //         alert('Logged in')
-    //     } else {
-    //         alert('Username and/or password is incorrect')
-    //     }
-    // }
-
     const handleLogin = (valueUsername, valuePassword) => {
         signIn(valueUsername, valuePassword)
     }
     return (
-        <View style={styles.container}>
+
+        <ScrollView contentContainerStyle={styles.container}>
             <StatusBar 
                 backgroundColor="#1e90ff"
                 barStyle="light-context"            
@@ -74,7 +64,8 @@ const Login = ({navigation}) => {
                     <Text style={styles.btnText}>Sign In</Text>
                 </TouchableOpacity>
             </View>
-        </View>
+        
+        </ScrollView>
     )
 }
 
